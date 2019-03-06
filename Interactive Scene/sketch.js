@@ -20,8 +20,8 @@ let whichImage;
 let whichBackground;
 let x = 300;
 let y = 300;
-let by = 300;
-let bx = 300;
+let by;
+let bx;
 
 //loading Images and Music
 function preload() {
@@ -39,6 +39,8 @@ function preload() {
 //Setup of everything
 function setup() {
     createCanvas(windowWidth, windowHeight);
+    bx = width / 2;
+    by = height / 2;
     imageMode(CENTER);
     musicScalar = 0.7;
     heroicMusic.setVolume(musicScalar);
