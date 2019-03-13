@@ -1,69 +1,70 @@
 // Button State Demo
 // Pouya Pourhaj
 // March 7, 2019
-//
-// Extra for Experts:
-// - describe what you did to take this project "above and beyond"
-
 
 let state;
-let buttonx, buttony, buttonWidth, buttonHeight;
-let ballx, bally, ballRadius, dx, dy;
+let buttonX, buttonY, buttonWidth, buttonHeight;
+let ballX, ballY, ballRadius, dx, dy;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
-    state = "menu";
-    buttonx = width / 2;
-    buttony = height / 2;
-    buttonWidth = 250;
-    buttonHeight = 125;
-    ballx = width / 2;
-    bally = height / 2;
-    ballRadius = 40;
-    dx = random(3, 10);
-    dy = random(3, 10);
+  createCanvas(windowWidth, windowHeight);
+  state = "menu";
+  buttonX = width / 2;
+  buttonY = height / 2;
+  buttonWidth = 250;
+  buttonHeight = 125;
+  ballX = width / 2;
+  ballY = height / 2;
+  ballRadius = 40;
+  dx = random(3, 10);
+  dy = random(3, 10);
 }
 
 function draw() {
-    background(0);
-    if (state === "menu") {
-        displayMenu();
-    }
-    if (state === "ballbounce") {
-        bounceTheBall();
-    }
+  background(0);
+  if (state === "menu") {
+    displayMenu();
+  }
+  if (state === "ballBounce") {
+    bounceTheBall();
+  }
 }
 
 function bounceTheBall() {
-    ballx += dx;
-    bally += dy;
-    if (ballx <= 0 + ballRadius || ballx >= width - ballRadius) {
-        dx *= -1;
-    }
-    if (bally <= 0 + ballRadius || bally >= height - ballRadius)
-}
+  // move
+  ballX += dx;
+  ballY += dy;
 
-fill(255);
-ellipse(width / 2, height / 2, 50, 50);
+  // bounce
+  if (ballX <= 0 + ballRadius || ballX >= width - ballRadius) {
+    dx *= -1;
+  }
+  if (ballY <= 0 + ballRadius || ballY >= height - ballRadius) {
+    dy *= -1;
+  }
+
+  // display
+  fill(255);
+  ellipse(ballX, ballY, ballRadius * 2, ballRadius * 2);
 }
 
 function displayMenu() {
-    rectMode(CENTER);
-    rect(buttonx, buttony, buttonWidth, buttonHeight);
+  rectMode(CENTER);
+  rect(buttonX, buttonY, buttonWidth, buttonHeight);
 }
 
 function mousePressed() {
-    if (state === "menu") {
-        if (clickedOnButton()) {
-            state = "ballbounce";
-        }
+  if (state === "menu") {
+    if (clickedOnButton(mouseX, mouseY)) {
+      state = "ballBounce";
     }
+  }
 }
 
 function clickedOnButton(x, y) {
-    return x >= buttonx - buttonWidth / 2 &&
-        x <= buttonx + buttonWidth / 2 &&
-        y >= buttony - buttonHeight / 2 &&
-        y <= buttony + buttonHeight / 2;
+  return x >= buttonX - buttonWidth / 2 &&
+        x <= buttonX + buttonWidth / 2 &&
+        y >= buttonY - buttonHeight / 2 &&
+        y <= buttonY + buttonHeight / 2;
 
 }
