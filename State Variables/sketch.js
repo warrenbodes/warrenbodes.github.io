@@ -109,9 +109,56 @@ function loadStartScreen() {
     background("red");
     rectMode(CENTER);
     rect(mainButtonX, mainButtonY, mainButtonWidth, mainButtonHeight);
-    if (clickedOnMainButton(mouseY, mouseX)) {
+    if (clickedOnMainButton(mouseX, mouseY)) {
       state = 2;
     }
+  }
+}
+
+//Choosing the difficulty
+function chooseDifficulty () {
+  if (state === 2) {
+    background("red");
+    rect(sideButtonX, sideButtonY, sideButtonWidth, sideButtonHeight);
+    if (clickedOnSideButton(mouseX, mouseY)) {
+      state = 3;
+    }
+  }
+}
+
+//Easy difficulty
+function difficultyEasy() {
+  if (state === 3) {
+    whichImage = "assasin";
+    whichBackground = "assaBack";
+    heroicMusic.play();
+    heroicMusic.volume(musicScalar);
+    moreMusic.stop();
+    witcherMusic.stop();
+  }
+}
+
+//Medium difficulty
+function difficultyMedium() {
+  if (state === 4) {
+    whichImage = "godOfWar";
+    whichBackground = "godBack";
+    moreMusic.play();
+    moreMusic.volume(musicScalar);
+    heroicMusic.stop();
+    witcherMusic.stop();
+  }
+}
+
+//Hard difficulty
+function difficultyHard() {
+  if (state === 5) {
+    whichImage = "witcher";
+    whichBackground = "witchBack";
+    witcherMusic.play();
+    witcherMusic.volume(musicScalar);
+    heroicMusic.stop();
+    moreMusic.stop();
   }
 }
 
@@ -183,6 +230,7 @@ function moving() {
   }
 }
 
+//Different states of game
 function choosingSetting() {
   if (state === 1) {
     loadStartScreen();
