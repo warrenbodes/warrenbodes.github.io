@@ -248,3 +248,16 @@ function choosingSetting() {
     difficultyHard();
   }
 }
+
+function startTheEnemy () {
+  enemyX += ex;
+  enemyY += ey;
+  if (enemyY <= 0 + enemyRadius || enemyY >= height - enemyRadius) {
+    ey *= -1;
+  }
+  if (enemyX <= 0 + enemyRadius || enemyX >= width - enemyRadius) {
+    ex *= -1;
+  }
+  fill("red");
+  ellipse(enemyX, enemyY, enemyRadius * 2, enemyRadius * 2);
+}
