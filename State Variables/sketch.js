@@ -72,6 +72,7 @@ function setup() {
 
 //Background and Images
 function draw() {
+  loadStartScreen();
   moving();
   clear();
   background("red");
@@ -122,6 +123,12 @@ function chooseDifficulty () {
     rect(sideButtonX, sideButtonY, sideButtonWidth, sideButtonHeight);
     if (clickedOnSideButton(mouseX, mouseY)) {
       state = 3;
+    }
+    if (clickedOnSideButton(mouseX, mouseY)) {
+      state = 4;
+    }
+    if (clickedOnSideButton(mouseX, mouseY)) {
+      state = 5;
     }
   }
 }
