@@ -74,8 +74,6 @@ function setup() {
 function draw() {
   loadStartScreen();
   moving();
-  clear();
-  background("red");
   if (whichImage === "assasin") {
     image(assaBack, bx, by, windowWidth, windowHeight);
     image(assasin, x, y, assasin.width * 0.8, assasin.height * 0.8);
@@ -109,6 +107,7 @@ function loadStartScreen() {
   if (state === 1) {
     background("red");
     rectMode(CENTER);
+    fill("white");
     rect(mainButtonX, mainButtonY, mainButtonWidth, mainButtonHeight);
     if (clickedOnMainButton(mouseX, mouseY)) {
       state = 2;
@@ -121,6 +120,8 @@ function chooseDifficulty () {
   if (state === 2) {
     background("red");
     rect(sideButtonX, sideButtonY, sideButtonWidth, sideButtonHeight);
+    rect(sideButtonX / 3, sideButtonY, sideButtonWidth, sideButtonHeight);
+    rect(sideButtonX * 2, sideButtonY, sideButtonWidth, sideButtonHeight);
     if (clickedOnSideButton(mouseX, mouseY)) {
       state = 3;
     }
@@ -136,36 +137,42 @@ function chooseDifficulty () {
 //Easy difficulty
 function difficultyEasy() {
   if (state === 3) {
+    difficulty = "Easy";
     whichImage = "assasin";
     whichBackground = "assaBack";
     heroicMusic.play();
     heroicMusic.volume(musicScalar);
     moreMusic.stop();
     witcherMusic.stop();
+    startTheEnemyEasy();
   }
 }
 
 //Medium difficulty
 function difficultyMedium() {
   if (state === 4) {
+    difficulty = "Medium";
     whichImage = "godOfWar";
     whichBackground = "godBack";
     moreMusic.play();
     moreMusic.volume(musicScalar);
     heroicMusic.stop();
     witcherMusic.stop();
+    startTheEnemyMedium();
   }
 }
 
 //Hard difficulty
 function difficultyHard() {
   if (state === 5) {
+    difficulty = "Hard";
     whichImage = "witcher";
     whichBackground = "witchBack";
     witcherMusic.play();
     witcherMusic.volume(musicScalar);
     heroicMusic.stop();
     moreMusic.stop();
+    startTheEnemyHard();
   }
 }
 
@@ -256,7 +263,7 @@ function choosingSetting() {
   }
 }
 
-function startTheEnemy () {
+function startTheEnemyEasy () {
   enemyX += ex;
   enemyY += ey;
   if (enemyY <= 0 + enemyRadius || enemyY >= height - enemyRadius) {
@@ -267,4 +274,30 @@ function startTheEnemy () {
   }
   fill("red");
   ellipse(enemyX, enemyY, enemyRadius * 2, enemyRadius * 2);
+}
+
+function startTheEnemyMedium () {
+  enemyX += ex;
+  enemyY += ey;
+  if (enemyY <= 0 + enemyRadius || enemyY >= height - enemyRadius) {
+    ey *= -3;
+  }
+  if (enemyX <= 0 + enemyRadius || enemyY >= width - enemyRadius) {
+    ex *= -3;
+  }
+  fill("red");
+  ellipse(enemyX, enemyY, enemyRadius * 3, enemyRadius * 3);
+}
+
+function startTheEnemyHard() {
+  enemyX += ex;
+  enemyY += ey;
+  if (enemyY <= 0 + enemyRadius || enemyY >= height - enemyRadius) {
+    ey *= 7;
+  }
+  if (enemyX <= 0 + enemyRadius || enemyY >= height - enemyRadius) {
+    ex *= 7;
+  }
+  fill("red");
+  ellipse(enemyX, enemyY, enemyRadius * 5, enemyRadius * 5);
 }
