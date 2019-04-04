@@ -117,18 +117,22 @@ function draw() {
   if (whichImage === "assasin") {
     image(assaBack, bx, by, windowWidth, windowHeight);
     image(assasin, x, y, assasin.width * 0.8, assasin.height * 0.8);
+    startTheEnemyEasy();
   }
   else if (whichImage === "godOfWar") {
     image(godBack, bx, by, windowWidth, windowHeight);
     image(godOfWar, x, y);
+    startTheEnemyMedium();
   }
   else if (whichImage === "witcher") {
     image(witchBack, bx, by, windowWidth, windowHeight);
     image(witcher, x, y, witcher.width * 0.6, witcher.height * 0.6);
+    startTheEnemyHard();
   }
   else if (whichImage === "reaper") {
     image(reaperBack, bx, by, windowWidth, windowHeight);
     image(reaper, x, y, reaper.width * 0.1, reaper.height * 0.1);
+    startTheEnemyImpossible();
   }
   gameOver();
 }
@@ -283,7 +287,7 @@ function moving() {
 function difficultyEasy() {
   whichImage = "assasin";
   whichBackground = "assaBack";
-  heroicMusic.loop();
+  // heroicMusic.loop();
   heroicMusic.setVolume(musicScalar);
   reaperMusic.stop();
   moreMusic.stop();
@@ -295,7 +299,7 @@ function difficultyEasy() {
 function difficultyMedium() {
   whichImage = "godOfWar";
   whichBackground = "godBack";
-  moreMusic.loop();
+  //moreMusic.loop();
   moreMusic.setVolume(musicScalar);
   reaperMusic.stop();
   heroicMusic.stop();
@@ -307,7 +311,7 @@ function difficultyMedium() {
 function difficultyHard() {
   whichImage = "witcher";
   whichBackground = "witchBack";
-  witcherMusic.loop();
+  //witcherMusic.loop();
   witcherMusic.setVolume(musicScalar);
   reaperMusic.stop();
   heroicMusic.stop();
@@ -320,7 +324,7 @@ function difficultyHard() {
 function difficultyImpossible() {
   whichImage = "reaper";
   whichBackground = "reaperBack";
-  reaperMusic.loop();
+  //reaperMusic.loop();
   reaperMusic.setVolume(musicScalar);
   heroicMusic.stop();
   moreMusic.stop();
