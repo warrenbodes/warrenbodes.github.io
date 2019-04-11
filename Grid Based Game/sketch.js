@@ -80,6 +80,7 @@ function mousePressed() {
       }
     }
   }
+}
 
 function clickedOnStartButton() {
   return mouseX >= startButtonX - startButtonWidth / 2 &&
@@ -113,3 +114,4 @@ function easyGrid() {
 function hardGrid() {
   background("yellow");
 }
+
