@@ -1,5 +1,5 @@
 // Grid Based Game
-// Pouya, Jienan
+// Pouya Pourhaj, Jienan Chen
 // April 16, 2019
 //
 // Extra for Experts:
